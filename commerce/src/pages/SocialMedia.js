@@ -74,6 +74,7 @@ const SocialMedia = () => {
               letterSpacing: '0.1em',
               textAlign: 'center',
               marginBottom: '30px',
+              fontSize: { xs: '2rem', sm: '3rem' }, // Responsive font size
             }}
           >
             Safiya Khanum - Welcome to Our World
@@ -87,123 +88,126 @@ const SocialMedia = () => {
             flexDirection: 'column',
             alignItems: 'center',
             marginTop: '50px',
-            gap: '40px', // Increase the gap between rows
+            gap: { xs: '20px', sm: '40px' }, // Responsive gap
           }}
         >
           {/* First Row of Icons */}
           <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between', // Distribute icons with space between
-          width: '100%', // Full width for alignment
-          maxWidth: '600px', // Limit the width
-          gap: '30px', // Increase the gap between icons
-        }}
-      >
-        {['facebook', 'instagram', 'youtube'].map((icon) => (
-          <Card
-            key={icon}
             sx={{
-              width: '150px',
-              background: 'transparent',
-              boxShadow: 'none',
-              transition: 'background 0.5s ease-in-out',
-              '&:hover': {
-                background: 'linear-gradient(135deg, #ff0084, #33001b)',
-              },
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
+              maxWidth: '600px',
+              gap: { xs: '20px', sm: '30px' }, // Responsive gap between icons
+              flexWrap: 'wrap', // Allow wrapping on smaller screens
+              justifyContent: 'center', // Center the icons
             }}
-            elevation={0}
-            component={motion.div}
           >
-            <CardContent
-              sx={{
-                textAlign: 'center',
-                padding: '10px',
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <a
-                href={iconLinks[icon]}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
+            {['facebook', 'instagram', 'youtube'].map((icon) => (
+              <Card
+                key={icon}
+                sx={{
+                  width: { xs: '80px', sm: '150px' }, // Responsive width
+                  background: 'transparent',
+                  boxShadow: 'none',
+                  transition: 'background 0.5s ease-in-out',
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, #ff0084, #33001b)',
+                  },
                 }}
+                elevation={0}
+                component={motion.div}
               >
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                  style={iconStyle}
+                <CardContent
+                  sx={{
+                    textAlign: 'center',
+                    padding: '10px',
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
                 >
-                  <i className={`fab fa-${icon}`}></i>
-                </motion.div>
-              </a>
-            </CardContent>
-          </Card>
-        ))}
-      </Box>
+                  <a
+                    href={iconLinks[icon]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      textDecoration: 'none',
+                      color: 'inherit',
+                    }}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                      style={iconStyle}
+                    >
+                      <i className={`fab fa-${icon}`}></i>
+                    </motion.div>
+                  </a>
+                </CardContent>
+              </Card>
+            ))}
+          </Box>
 
           {/* Second Row of Icons */}
-             {/* Second Row of Icons */}
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between', // Distribute icons with space between
-          width: '100%', // Full width for alignment
-          maxWidth: '600px', // Limit the width
-          gap: '30px', // Increase the gap between icons
-        }}
-      >
-        {['linkedin', 'pinterest', 'tiktok'].map((icon) => (
-          <Card
-            key={icon}
+          <Box
             sx={{
-              width: '150px',
-              background: 'transparent',
-              boxShadow: 'none',
-              transition: 'background 0.5s ease-in-out',
-              '&:hover': {
-                background: 'linear-gradient(135deg, #ff0084, #33001b)',
-              },
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
+              maxWidth: '600px',
+              gap: { xs: '20px', sm: '30px' }, // Responsive gap between icons
+              flexWrap: 'wrap', // Allow wrapping on smaller screens
+              justifyContent: 'center', // Center the icons
             }}
-            elevation={0}
-            component={motion.div}
           >
-            <CardContent
-              sx={{
-                textAlign: 'center',
-                padding: '10px',
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <a
-                href={iconLinks[icon]}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
+            {['linkedin', 'pinterest', 'tiktok'].map((icon) => (
+              <Card
+                key={icon}
+                sx={{
+                  width: { xs: '80px', sm: '150px' }, // Responsive width
+                  background: 'transparent',
+                  boxShadow: 'none',
+                  transition: 'background 0.5s ease-in-out',
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, #ff0084, #33001b)',
+                  },
                 }}
+                elevation={0}
+                component={motion.div}
               >
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                  style={iconStyle}
+                <CardContent
+                  sx={{
+                    textAlign: 'center',
+                    padding: '10px',
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
                 >
-                  <i className={`fab fa-${icon}`}></i>
-                </motion.div>
-              </a>
-            </CardContent>
-          </Card>
-        ))}
-      </Box>
+                  <a
+                    href={iconLinks[icon]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      textDecoration: 'none',
+                      color: 'inherit',
+                    }}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                      style={iconStyle}
+                    >
+                      <i className={`fab fa-${icon}`}></i>
+                    </motion.div>
+                  </a>
+                </CardContent>
+              </Card>
+            ))}
+          </Box>
         </Box>
 
         {/* Bouncing Circles */}
@@ -214,8 +218,8 @@ const SocialMedia = () => {
             position: 'absolute',
             top: '30%',
             left: '30%',
-            width: '40px',
-            height: '40px',
+            width: { xs: '20px', sm: '40px' }, // Responsive width
+            height: { xs: '20px', sm: '40px' }, // Responsive height
             backgroundColor: 'white',
             borderRadius: '50%',
           }}
@@ -228,75 +232,79 @@ const SocialMedia = () => {
             position: 'absolute',
             top: '90%',
             right: '30%',
-            width: '40px',
-            height: '40px',
+            width: { xs: '20px', sm: '40px' }, // Responsive width
+            height: { xs: '20px', sm: '40px' }, // Responsive height
             backgroundColor: 'white',
             borderRadius: '50%',
           }}
         />
       </Box>
-          <OfferSection/>
+
+      <OfferSection />
+
       {/* Offer Section */}
       <Box
-      ref={sectionRef}
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '50px',
-        background: 'linear-gradient(135deg, #ed4264, #ffedbc)', // Peach gradient
-        opacity: isSectionVisible ? 1 : 0,
-        transition: 'opacity 1s ease-in-out',
-        overflow: 'hidden',
-      }}
-    >
-       <motion.div
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: 'easeOut' }}
-        style={{ flex: 1, paddingRight: '20px' }}
+        ref={sectionRef}
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' }, // Responsive layout
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: { xs: '20px', sm: '50px' }, // Responsive padding
+          background: 'linear-gradient(135deg, #ed4264, #ffedbc)', // Peach gradient
+          opacity: isSectionVisible ? 1 : 0,
+          transition: 'opacity 1s ease-in-out',
+          overflow: 'hidden',
+        }}
       >
-         <img
-          src="image.png" // Replace with your image path
-          alt="Offer Image"
-          style={{
-            width: '100%',
-            height: 'auto',
-            borderRadius: '8px',
-            display: 'block',
-          }}
-        />        
-        </motion.div>
-        
-        <Box sx={{ flex: 1 }}>
         <motion.div
-        initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: 'easeOut' }}
-        style={{ flex: 1 }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: 'bold',
-            marginBottom: '20px',
-            textAlign: 'left',
-          }}
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, ease: 'easeOut' }}
+          style={{ flex: 1, paddingRight: { xs: '0', sm: '20px' } }} // Responsive padding
         >
-          Share & Win Exciting Offers!
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            lineHeight: 1.6,
-            textAlign: 'left',
-          }}
-        >
-          Send us your video or pictures of you sharing Safiya Khanum's products on social media, and stand a chance to win exciting new offers and discounts! Tag us and use the hashtag #SafiyaKhanum in your posts. We can't wait to see your amazing content!
-          #SafiyaLifeStyle
-        </Typography>
-      </motion.div>
+          <img
+            src="image.png" // Replace with your image path
+            alt="Offer Image"
+            style={{
+              width: '100%',
+              height: 'auto',
+              borderRadius: '8px',
+              display: 'block',
+            }}
+          />        
+        </motion.div>
+
+        <Box sx={{ flex: 1 }}>
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            style={{ flex: 1 }}
+          >
+            <Typography
+              variant="h4"
+              sx={{
+                fontWeight: 'bold',
+                marginBottom: '20px',
+                textAlign: 'left',
+                fontSize: { xs: '1.5rem', sm: '2rem' }, // Responsive font size
+              }}
+            >
+              Share & Win Exciting Offers!
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                lineHeight: 1.6,
+                textAlign: 'left',
+                fontSize: { xs: '0.875rem', sm: '1rem' }, // Responsive font size
+              }}
+            >
+              Send us your video or pictures of you sharing Safiya Khanum's products on social media, and stand a chance to win exciting new offers and discounts! Tag us and use the hashtag #SafiyaKhanum in your posts. We can't wait to see your amazing content!
+              #SafiyaLifeStyle
+            </Typography>
+          </motion.div>
         </Box>
       </Box>
     </>

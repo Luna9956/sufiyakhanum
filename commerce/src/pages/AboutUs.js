@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Typography, Grid, IconButton, useTheme } from '@mui/material';
+import { Box, Typography, Grid, IconButton, useTheme,useMediaQuery } from '@mui/material';
 import { Facebook, Instagram, WhatsApp, Pinterest, LinkedIn, YouTube } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTiktok } from '@fortawesome/free-brands-svg-icons'; 
 const AboutUs = () => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Box
@@ -15,7 +16,9 @@ const AboutUs = () => {
         flexDirection: 'column',
         alignItems: 'center',
         padding: 4,
-        background: 'white', // Removed background color
+        background: 'white',
+        marginBottom: isMobile ? '600px' : 0,
+         // Removed background color
       }}
     >
       <Typography

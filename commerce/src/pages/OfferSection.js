@@ -19,9 +19,9 @@ const OfferSection = () => {
     <Box
       sx={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-        gap: '20px',
-        padding: '50px',
+        gridTemplateColumns: { xs: '1fr', sm: 'repeat(auto-fit, minmax(250px, 1fr))' },
+        gap: { xs: '10px', sm: '20px' },
+        padding: { xs: '20px', sm: '50px' },
         backgroundColor: '#ffffff',
       }}
     >
