@@ -8,7 +8,7 @@ const ProductList = ({ onEdit, refreshTrigger }) => {
   const [products, setProducts] = useState([]);
 
   const fetchProducts = () => {
-    axios.get('https://sufiya-admin.vercel.app/products')
+    axios.get('https://sufiyakhanum.vercel.app/products')
       .then(response => {
         setProducts(response.data);
       })

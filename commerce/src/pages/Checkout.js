@@ -56,7 +56,7 @@ const Checkout = () => {
   
       console.log('Submit Data:', { ...formData, products: formattedCartItems }); // Add this line to inspect the data being sent
   
-      await axios.post('https://sufiya-admin.vercel.app/api/checkouts', { ...formData, products: formattedCartItems });
+      await axios.post('https://sufiyakhanum.vercel.app//api/checkouts', { ...formData, products: formattedCartItems });
       setSuccess(true);
       localStorage.removeItem('cartItems'); // Clear cart items after successful checkout
       // Navigate to a confirmation page or similar

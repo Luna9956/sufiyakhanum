@@ -6,7 +6,7 @@ const TermsOfService = () => {
   return (
     <Container maxWidth="md">
          <Navbar/>
-      <Box my={4} sx={{ marginTop: '100px', paddingTop: '20px' }} >
+      <Box my={4} sx={{ marginTop: '100px', paddingTop: '20px', width: { xs:300, sm: 600, md: '1366px',xl:"2366px"} }} >
         <Typography variant="h4" gutterBottom>
           TERMS OF SERVICE
         </Typography>

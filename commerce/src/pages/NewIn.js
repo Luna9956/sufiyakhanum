@@ -11,7 +11,7 @@ const Unstitched = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://sufiya-admin.vercel.app/products');
+        const response = await axios.get('https://sufiyakhanum.vercel.app/products');
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -36,7 +36,13 @@ const Unstitched = () => {
         ) : (
           <Grid container spacing={4}>
             {products.map((product) => (
-              <Grid item xs={12} sm={6} md={4} key={product._id}>
+              <Grid 
+                item 
+                xs={12} 
+                sm={6} // Two products per row on small screens (mobile)
+                md={4} // Three products per row on medium and larger screens
+                key={product._id}
+              >
                 <Card
                   sx={{
                     cursor: 'pointer',

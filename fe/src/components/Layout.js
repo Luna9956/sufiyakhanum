@@ -13,7 +13,7 @@ const Layout = ({ loggedIn, onLoginSuccess, onLogout }) => {
   useEffect(() => {
     const checkForNewOrderData = async () => {
       try {
-        const response = await axios.get('https://sufiya-admin.vercel.app/api/orders/new-data');
+        const response = await axios.get('https://sufiyakhanum.vercel.app/api/orders/new-data');
         if (response.data.hasNewData) {
           setHasNewOrderData(true);
         } else {

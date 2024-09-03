@@ -20,7 +20,7 @@ const OrdersPage = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('https://sufiya-admin.vercel.app/api/checkouts');
+        const response = await axios.get('https://sufiyakhanum.vercel.app/api/checkouts');
         setOrders(response.data.map(order => ({ ...order, status: 'pending' })));
       } catch (error) {
         console.error('Error fetching orders:', error);
@@ -36,7 +36,7 @@ const OrdersPage = () => {
   const handleDelete = async (orderId) => {
     if (window.confirm('Are you sure you want to delete this order?')) {
       try {
-        await axios.delete(`https://sufiya-admin.vercel.app/api/checkouts/${orderId}`);
+        await axios.delete(`https://sufiyakhanum.vercel.app/api/checkouts/${orderId}`);
         setOrders(orders.filter(order => order._id !== orderId)); // Update UI
       } catch (error) {
         console.error('Error deleting order:', error);

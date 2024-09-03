@@ -6,7 +6,7 @@ const Addition = () => {
   return (
     <Box
       sx={{
-        width: '100%',
+        width: { xs:300, sm: 600, md: '1366px',xl:"2366px"},
         height: '100vh',
         backgroundImage: `url('https://aik.store/cdn/shop/files/RTW_-_Home_Page_Website_Banner.jpg?v=1720519136&width=1400')`,
         backgroundSize: 'cover',

@@ -1,24 +1,24 @@
 import React from 'react';
-import { Box, Typography, Grid, IconButton, useTheme,useMediaQuery } from '@mui/material';
-import { Facebook, Instagram, WhatsApp, Pinterest, LinkedIn, YouTube } from '@mui/icons-material';
+import { Box, Typography, Grid, IconButton, useTheme, useMediaQuery } from '@mui/material';
+import { Facebook, Instagram, Pinterest, LinkedIn, YouTube } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTiktok } from '@fortawesome/free-brands-svg-icons'; 
+import { faTiktok } from '@fortawesome/free-brands-svg-icons';
+
 const AboutUs = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isExtraSmall = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
     <Box
       sx={{
-        width: '100%',
-        height: '100vh',
+        width: { xs:300, sm: 600, md: '1366px',xl:"2366px"},
+        padding: 4,
+        background: 'white',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: 4,
-        background: 'white',
-        marginBottom: isMobile ? '600px' : 0,
-         // Removed background color
+        marginBottom: isMobile ? '0px' : 0,
       }}
     >
       <Typography
@@ -29,13 +29,13 @@ const AboutUs = () => {
           textAlign: 'center',
           fontWeight: 'bold',
           letterSpacing: 1,
-          position: 'relative',
+          fontSize: isExtraSmall ? '1.5rem' : isMobile ? '2rem' : '2.5rem',
         }}
       >
-        #WORLDOFSAFIYAKHANUM
+        #WORLDOFSK
       </Typography>
 
-      <Grid container spacing={4}>
+      <Grid container spacing={4} direction={isExtraSmall ? 'column' : 'row'}>
         <Grid item xs={12} md={6}>
           <Box
             sx={{
@@ -71,7 +71,7 @@ const AboutUs = () => {
             <Typography
               variant="body1"
               sx={{
-                fontSize: '1.3rem',
+                fontSize: isExtraSmall ? '1rem' : '1.3rem',
                 color: theme.palette.text.primary,
                 lineHeight: 1.8,
                 '&:hover': {
@@ -135,7 +135,7 @@ const AboutUs = () => {
             variant="body1"
             sx={{
               marginTop: 2,
-              fontSize: '1.3rem',
+              fontSize: isExtraSmall ? '1rem' : '1.3rem',
               color: theme.palette.text.primary,
               lineHeight: 1.8,
               '&:hover': {
@@ -152,6 +152,7 @@ const AboutUs = () => {
       <Box
         sx={{
           display: 'flex',
+          flexWrap: 'wrap',
           justifyContent: 'center',
           marginTop: 4,
         }}
@@ -178,7 +179,7 @@ const AboutUs = () => {
             },
           }}
         >
-          <Pinterest/>
+          <Pinterest />
         </IconButton>
         <IconButton
           href="https://www.instagram.com/safiyakhanumofficial?igsh=MWpjdnV5ZXhvdHFiMA=="
@@ -217,8 +218,8 @@ const AboutUs = () => {
           <YouTube />
         </IconButton>
         <IconButton href="https://www.tiktok.com/@safiyakhanumofficial?_t=8pAdNI2NUsD&_r=1">
-              <FontAwesomeIcon icon={faTiktok} />
-            </IconButton>
+          <FontAwesomeIcon icon={faTiktok} />
+        </IconButton>
       </Box>
     </Box>
   );
