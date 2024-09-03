@@ -11,7 +11,7 @@ const Unstitched = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://sufiya-admin.vercel.app/products?tag=embroidery');
+        const response = await axios.get('https://sufiyakhanum.vercel.app/products?tag=embroidery');
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -32,11 +32,17 @@ const Unstitched = () => {
       </Box>
       <Box sx={{ marginTop: '120px', paddingTop: '20px', paddingX: 4 }}>
         {products.length === 0 ? (
-          <Typography variant="h6" align="center">No embroidory products available</Typography>
+          <Typography variant="h6" align="center">No embroidery products available</Typography>
         ) : (
           <Grid container spacing={4}>
             {products.map((product) => (
-              <Grid item xs={12} sm={6} md={4} key={product._id}>
+              <Grid 
+                item 
+                xs={12} 
+                sm={6} // Two products per row on small screens (mobile)
+                md={4} // Three products per row on medium and larger screens
+                key={product._id}
+              >
                 <Card
                   sx={{
                     cursor: 'pointer',

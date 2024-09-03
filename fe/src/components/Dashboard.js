@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   const fetchOrdersData = async () => {
     try {
-      const response = await axios.get('https://sufiya-admin.vercel.app/api/checkouts');
+      const response = await axios.get('https://sufiyakhanum.vercel.app/api/checkouts');
       const orders = response.data;
 
       // Calculate Orders

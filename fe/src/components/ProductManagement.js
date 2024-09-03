@@ -15,7 +15,7 @@ const ProductManagement = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://sufiya-admin.vercel.app/products');
+      const response = await axios.get('https://sufiyakhanum.vercel.app/products');
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -34,7 +34,7 @@ const ProductManagement = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/products/${id}`);
+      await axios.delete(`https://sufiyakhanum.vercel.app/products/${id}`);
       fetchProducts();
     } catch (error) {
       console.error('Error deleting product:', error);
@@ -52,7 +52,7 @@ const ProductManagement = () => {
 
   const handleStockSave = async (productId) => {
     try {
-      await axios.put(`http://localhost:5000/products/${productId}`, { stock: Number(stockValue) });
+      await axios.put(`https://sufiyakhanum.vercel.app/products/${productId}`, { stock: Number(stockValue) });
       setEditingStock(null);
       fetchProducts();
     } catch (error) {

@@ -15,6 +15,7 @@ const Gallery = () => {
         justifyContent: 'space-around',
         flexWrap: 'wrap',
         padding: 2,
+        width: { xs:300, sm: 600, md: '1366px',xl:"2366px"}
       }}
     >
       {images.map((url, index) => (

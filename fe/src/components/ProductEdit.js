@@ -11,7 +11,7 @@ const ProductEdit = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/products/${id}`);
+        const response = await axios.get(`https://sufiyakhanum.vercel.app/products/${id}`);
         setProduct(response.data);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -23,7 +23,7 @@ const ProductEdit = () => {
 
   const handleProductSave = async (updatedProduct) => {
     try {
-      await axios.put(`http://localhost:5000/products/${id}`, updatedProduct, {
+      await axios.put(`https://sufiyakhanum.vercel.app/products/${id}`, updatedProduct, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -11,7 +11,7 @@ const Unstitched = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://sufiya-admin.vercel.app/products?tag=bridal');
+        const response = await axios.get('https://sufiyakhanum.vercel.app/products?tag=bridal');
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);

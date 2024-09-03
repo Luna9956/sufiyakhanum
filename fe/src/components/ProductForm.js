@@ -109,7 +109,7 @@ const ProductForm = ({ product, onProductSave }) => {
     });
 
     try {
-      const response = await axios.post('http://localhost:5000/products', formData, {
+      const response = await axios.post('https://sufiyakhanum.vercel.app/products', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

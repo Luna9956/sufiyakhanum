@@ -14,23 +14,25 @@ const Home = () => {
         justifyContent: 'center',
         color: 'white',
         textAlign: 'center',
+        position: 'relative', // Ensure the ::after pseudo-element is positioned correctly
         '&::after': {
           content: '""',
           position: 'absolute',
           top: 0,
           left: 0,
-          width: '100%',
+          width: { xs:300, sm: 600, md: '1366px',xl:"2366px"},
           height: '100%',
           background: 'rgba(0, 0, 0, 0.5)',
+          zIndex: -1, // Ensure the overlay is behind the text
         },
       }}
     >
       <Typography
         variant="h1"
         sx={{
-          position: 'relative',
-          fontSize: '4rem',
+          fontSize: { xs: '2.5rem', sm: '3rem', md: '4rem' }, // Adjust font size for different screen sizes
           fontWeight: 'bold',
+          zIndex: 1, // Ensure the text is above the overlay
         }}
       >
         Welcome to SafiyaKhanum

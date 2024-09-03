@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Toolbar, Typography, Box, Link as MuiLink, IconButton, Badge, Menu, MenuItem, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box, Link as MuiLink, IconButton, Badge, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Search, ShoppingCart, Menu as MenuIcon, Close } from '@mui/icons-material';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [cartItems, setCartItems] = useState(0);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [drawerOpen, setDrawerOpen] = useState(false); // State to control drawer
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -29,15 +28,6 @@ const Navbar = () => {
 
   const isHomepage = location.pathname === '/';
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = (path) => {
-    setAnchorEl(null);
-    navigate(path);
-  };
-
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -54,22 +44,23 @@ const Navbar = () => {
         color: isHomepage ? (scrolled ? 'black' : 'white') : 'black',
         boxShadow: isHomepage && scrolled ? 4 : 'none',
         zIndex: (theme) => theme.zIndex.appBar + 1,
+        left: "0",  // Aligns the AppBar to the left
       }}
     >
       <Toolbar
         sx={{
           display: 'flex',
-          justifyContent: { xs: 'space-between', md: 'center' },
+          justifyContent: 'space-between',
           alignItems: 'center',
-          minHeight: 100,
-          position: 'relative',
-          padding: '0 16px',
+          minHeight: { xs: 50, sm: 60, md: 80 },
+          padding: { xs: '0 0px', sm: '0 12px', md: '0 16px' },
+          width: { xs:300, sm: 600, md: '1366px',xl:"2366px"}, // Make sure it spans the full width
         }}
       >
         <IconButton
           edge="start"
           sx={{ display: { xs: 'block', md: 'none' }, color: isHomepage ? (scrolled ? 'black' : 'white') : 'black' }}
-          onClick={toggleDrawer(true)} // Open drawer
+          onClick={toggleDrawer(true)}
         >
           <MenuIcon />
         </IconButton>
@@ -78,18 +69,19 @@ const Navbar = () => {
           <Typography
             variant="h1"
             sx={{
-              fontSize: '2rem',
+              fontSize: { xs: '1.2rem', sm: '1.5rem', md: '2rem' },
               fontFamily: "'Serif DiHot', serif",
               cursor: 'pointer',
               color: isHomepage ? (scrolled ? 'black' : 'white') : 'black',
-              textAlign: { xs: 'center', md: 'left' },
+              textAlign: 'center', // Centered for all sizes
+              flexGrow: 1, // Allow to grow and take available space
             }}
           >
             S-K
           </Typography>
         </Link>
 
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'space-around', width: '100%', marginTop: 2 }}>
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'space-between', flexGrow: 1 }}>
           <MuiLink component={Link} to="/newin" sx={navLinkStyle}>NEW IN</MuiLink>
           <MuiLink component={Link} to="/stitched" sx={navLinkStyle}>Stitched</MuiLink>
           <MuiLink component={Link} to="/unstitched" sx={navLinkStyle}>UNSTITCHED</MuiLink>
@@ -99,11 +91,20 @@ const Navbar = () => {
           <MuiLink component={Link} to="/socialmedia" sx={navLinkStyle}>SK's Community</MuiLink>
         </Box>
 
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <IconButton sx={{ color: isHomepage ? (scrolled ? 'black' : 'white') : 'black' }} onClick={handleClick}>
+        <Box sx={{ display: { xs: 'flex', md: 'flex' }, alignItems: 'center', gap: 1 }}>
+          <IconButton sx={{ color: isHomepage ? (scrolled ? 'black' : 'white') : 'black' }} onClick={() => navigate('/search')}>
             <Search />
           </IconButton>
-          <IconButton sx={{ color: isHomepage ? (scrolled ? 'black' : 'white') : 'black' }} onClick={() => navigate('/cart')}>
+            <IconButton sx={{ color: isHomepage ? (scrolled ? 'black' : 'white') : 'black' }} onClick={() => navigate('/cart')}>
+              <Badge badgeContent={cartItems} color="error">
+                <ShoppingCart />
+              </Badge>
+            </IconButton>
+          
+          <IconButton
+            sx={{ display: { xs: 'none', md: 'block' }, color: isHomepage ? (scrolled ? 'black' : 'white') : 'black' }}
+            onClick={() => navigate('/cart')}
+          >
             <Badge badgeContent={cartItems} color="error">
               <ShoppingCart />
             </Badge>
@@ -149,7 +150,7 @@ const Navbar = () => {
 // Common styles for nav links
 const navLinkStyle = {
   color: 'inherit',
-  fontSize: '1.1rem',
+  fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
   fontWeight: 'bold',
   padding: 1,
   textDecoration: 'none',
