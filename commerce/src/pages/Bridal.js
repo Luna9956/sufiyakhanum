@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Box, Typography, Card, CardMedia, CardContent, Grid, Button } from '@mui/material';
+import { Box, Typography, Card, CardMedia, CardContent, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
@@ -36,7 +36,7 @@ const Unstitched = () => {
         ) : (
           <Grid container spacing={4}>
             {products.map((product) => (
-              <Grid item xs={12} sm={6} md={4} key={product._id}>
+              <Grid item xs={6} sm={6} md={4} key={product._id}>
                 <Card
                   sx={{
                     cursor: 'pointer',
