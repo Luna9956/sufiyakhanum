@@ -85,7 +85,7 @@ const Navbar = () => {
               textAlign: { xs: 'center', md: 'left' },
             }}
           >
-            SafiyaKhanum
+            S-K
           </Typography>
         </Link>
 
