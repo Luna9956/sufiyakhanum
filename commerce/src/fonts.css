@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Bodoni MT';
+    src: url('./assets/fonts/BodoniMT.woff2') format('woff2'),
+         url('./assets/fonts/BodoniMT.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
