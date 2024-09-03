@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Card, CardMedia, CardContent, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Card, CardMedia, useMediaQuery, useTheme } from '@mui/material';
 
 // Sample data for images
 const trendingImages = [
@@ -8,9 +8,6 @@ const trendingImages = [
   'https://aik.store/cdn/shop/files/aik-atelier-wedding-festive-24-vol-1-look-10-1.jpg?v=1716387288&width=200',
   'https://aik.store/cdn/shop/files/aik-atelier-wedding-festive-24-vol-1-look-08-1_9ea3346a-08a9-4cff-9eb3-abf574d80721.jpg?v=1706872134&width=200',
   'https://aik.store/cdn/shop/files/aik-atelier-wedding-festive-24-vol-1-look-03-1.jpg?v=1706725844&width=200',
-  'https://aik.store/cdn/shop/files/aik-atelier-wedding-festive-24-vol-1-look-03-1.jpg?v=1706725844&width=200',
-  'https://aik.store/cdn/shop/files/aik-atelier-lawn-eid-edit-vol-3-look-03-A-1.jpg?v=1717504500&width=200',
-  'https://aik.store/cdn/shop/files/aik-atelier-lawn-eid-edit-vol-3-look-03-A-1.jpg?v=1717504500&width=200',
 ];
 
 const newInImages = [
@@ -19,18 +16,16 @@ const newInImages = [
   'https://aik.store/cdn/shop/files/aik-atelier-lawn-eid-edit-vol-3-look-03-A-1.jpg?v=1717504500&width=200',
   'https://aik.store/cdn/shop/files/aik-atelier-lawn-eid-edit-vol-3-look-01-B-1.jpg?v=1717504094&width=200',
   'https://aik.store/cdn/shop/files/aik-atelier-lawn-eid-edit-vol-3-look-02-A-1.jpg?v=1717504181&width=200',
-  'https://aik.store/cdn/shop/files/aik-atelier-lawn-eid-edit-vol-3-look-02-B-1.jpg?v=1717504264&width=200',
-  'https://aik.store/cdn/shop/files/aik-atelier-lawn-eid-edit-vol-3-look-02-B-1.jpg?v=1717504264&width=200',
- 
-
 ];
 
 const Arrivals = () => {
   const [selectedCategory, setSelectedCategory] = useState('TRENDING');
   const [startIndex, setStartIndex] = useState(0);
-  const imagesPerPage = 5;
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm','md'));
+  
+  // Adjust the number of images per page based on screen size
+  const imagesPerPage = isMobile ? 1 : 5;
 
   const images = selectedCategory === 'TRENDING' ? trendingImages : newInImages;
 
@@ -77,12 +72,13 @@ const Arrivals = () => {
             display: 'flex',
             transition: 'transform 0.5s',
             transform: `translateX(-${(startIndex / imagesPerPage) * 100}%)`,
+            width: `${(images.length / imagesPerPage) * 100}%`, // Adjust width based on number of images
           }}
         >
           {images.slice(startIndex, startIndex + imagesPerPage).map((img, index) => (
             <Card
               key={index}
-              sx={{ height: '100%', width: isMobile ? '100%' : '20%', display: 'inline-block', position: 'relative' }}
+              sx={{ height: '100%', width: isMobile ? '100%' : `${100 / imagesPerPage}%`, display: 'inline-block', position: 'relative' }}
             >
               <CardMedia
                 component="img"
