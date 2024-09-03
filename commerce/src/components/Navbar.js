@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Toolbar, Typography, Box, Link as MuiLink, IconButton, Badge, Menu, MenuItem } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box, Link as MuiLink, IconButton, Badge, Menu, MenuItem, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Search, ShoppingCart } from '@mui/icons-material';
+import { Search, ShoppingCart, Menu as MenuIcon, Close } from '@mui/icons-material';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [cartItems, setCartItems] = useState(0); // State to track number of items in the cart
-  const [anchorEl, setAnchorEl] = useState(null); // State to manage dropdown menu
-  const location = useLocation(); // Get current location
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [cartItems, setCartItems] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [drawerOpen, setDrawerOpen] = useState(false); // State to control drawer
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,13 +20,10 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    // Fetch cart items count from local storage or an API
     const fetchCartItems = () => {
-      // For example, using local storage (replace with your logic)
       const items = JSON.parse(localStorage.getItem('cartItems')) || [];
       setCartItems(items.length);
     };
-
     fetchCartItems();
   }, []);
 
@@ -40,7 +38,12 @@ const Navbar = () => {
     navigate(path);
   };
 
-  const open = Boolean(anchorEl);
+  const toggleDrawer = (open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
 
   return (
     <AppBar
@@ -50,143 +53,94 @@ const Navbar = () => {
         backgroundColor: isHomepage ? (scrolled ? 'white' : 'transparent') : 'white',
         color: isHomepage ? (scrolled ? 'black' : 'white') : 'black',
         boxShadow: isHomepage && scrolled ? 4 : 'none',
-        zIndex: (theme) => theme.zIndex.appBar + 1, // Ensure the navbar is above other content
+        zIndex: (theme) => theme.zIndex.appBar + 1,
       }}
     >
       <Toolbar
         sx={{
           display: 'flex',
-          flexDirection: 'column',
+          justifyContent: { xs: 'space-between', md: 'center' },
           alignItems: 'center',
-          justifyContent: 'center',
           minHeight: 100,
           position: 'relative',
-          padding: '0 16px', // Optional padding
+          padding: '0 16px',
         }}
       >
+        <IconButton
+          edge="start"
+          sx={{ display: { xs: 'block', md: 'none' }, color: isHomepage ? (scrolled ? 'black' : 'white') : 'black' }}
+          onClick={toggleDrawer(true)} // Open drawer
+        >
+          <MenuIcon />
+        </IconButton>
+
         <Link to="/" style={{ textDecoration: 'none' }}>
           <Typography
             variant="h1"
             sx={{
-              fontSize: '3rem',
-              fontFamily: "'Serif DiHot', serif", // Updated to use Serif DiHot
-              cursor: 'pointer', // Indicate that it's clickable
+              fontSize: '2rem',
+              fontFamily: "'Serif DiHot', serif",
+              cursor: 'pointer',
               color: isHomepage ? (scrolled ? 'black' : 'white') : 'black',
+              textAlign: { xs: 'center', md: 'left' },
             }}
           >
             SafiyaKhanum
           </Typography>
         </Link>
 
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            width: '100%',
-            marginTop: 2,
-          }}
-        >
-          <MuiLink
-            component={Link}
-            to="/newin"
-            sx={navLinkStyle}
-          >
-            NEW IN
-          </MuiLink>
-          <MuiLink
-            component={Link}
-            to="/stitched"
-            sx={navLinkStyle}
-          >
-            Stitched
-          </MuiLink>
-          <MuiLink
-            component={Link}
-            to="/unstitched"
-            sx={navLinkStyle}
-          >
-            UNSTITCHED
-          </MuiLink>
-          <MuiLink
-            component={Link}
-            to="/bridal"
-            sx={navLinkStyle}
-          >
-            Bridal
-          </MuiLink>
-          <MuiLink
-            component={Link}
-            to="/embroidory"
-            sx={navLinkStyle}
-          >
-            Embroidory
-          </MuiLink>
-          <MuiLink
-            component={Link}
-            to="/sale"
-            sx={navLinkStyle}
-          >
-            SALE
-          </MuiLink>
-          <MuiLink
-            component={Link}
-            to="/socialmedia"
-            sx={navLinkStyle}
-          >
-           SK's Community
-          </MuiLink>
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'space-around', width: '100%', marginTop: 2 }}>
+          <MuiLink component={Link} to="/newin" sx={navLinkStyle}>NEW IN</MuiLink>
+          <MuiLink component={Link} to="/stitched" sx={navLinkStyle}>Stitched</MuiLink>
+          <MuiLink component={Link} to="/unstitched" sx={navLinkStyle}>UNSTITCHED</MuiLink>
+          <MuiLink component={Link} to="/bridal" sx={navLinkStyle}>Bridal</MuiLink>
+          <MuiLink component={Link} to="/embroidory" sx={navLinkStyle}>Embroidory</MuiLink>
+          <MuiLink component={Link} to="/sale" sx={navLinkStyle}>SALE</MuiLink>
+          <MuiLink component={Link} to="/socialmedia" sx={navLinkStyle}>SK's Community</MuiLink>
         </Box>
-        <Box
-          sx={{
-            position: 'absolute',
-            right: 16,
-            top: 16,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 1,
-          }}
-        >
-          <IconButton
-            sx={{
-              color: isHomepage ? (scrolled ? 'black' : 'white') : 'black',
-            }}
-            onClick={handleClick} // Open the dropdown menu
-          >
+
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <IconButton sx={{ color: isHomepage ? (scrolled ? 'black' : 'white') : 'black' }} onClick={handleClick}>
             <Search />
           </IconButton>
-          <IconButton
-            sx={{
-              color: isHomepage ? (scrolled ? 'black' : 'white') : 'black',
-            }}
-            onClick={() => navigate('/cart')} // Navigate to cart page
-          >
-            <Badge
-              badgeContent={cartItems} // Show the number of items
-              color="error"
-              sx={{
-                '.MuiBadge-dot': {
-                  borderRadius: '50%',
-                  width: 8,
-                  height: 8,
-                },
-              }}
-            >
+          <IconButton sx={{ color: isHomepage ? (scrolled ? 'black' : 'white') : 'black' }} onClick={() => navigate('/cart')}>
+            <Badge badgeContent={cartItems} color="error">
               <ShoppingCart />
             </Badge>
           </IconButton>
         </Box>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={() => setAnchorEl(null)}
-        >
-          <MenuItem onClick={() => handleClose('/newin')}>NEW IN</MenuItem>
-          <MenuItem onClick={() => handleClose('/stitched')}>Stitched</MenuItem>
-          <MenuItem onClick={() => handleClose('/unstitched')}>UNSTITCHED</MenuItem>
-          <MenuItem onClick={() => handleClose('/bridal')}>Bridal</MenuItem>
-          <MenuItem onClick={() => handleClose('/sale')}>SALE</MenuItem>
-          <MenuItem onClick={() => handleClose('/socialmedia')}>World Of Safiya Khanum</MenuItem>
-        </Menu>
+
+        {/* Drawer for small screens */}
+        <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+          <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+            <IconButton onClick={toggleDrawer(false)}>
+              <Close />
+            </IconButton>
+            <List>
+              <ListItem button component={Link} to="/newin">
+                <ListItemText primary="NEW IN" />
+              </ListItem>
+              <ListItem button component={Link} to="/stitched">
+                <ListItemText primary="Stitched" />
+              </ListItem>
+              <ListItem button component={Link} to="/unstitched">
+                <ListItemText primary="UNSTITCHED" />
+              </ListItem>
+              <ListItem button component={Link} to="/bridal">
+                <ListItemText primary="Bridal" />
+              </ListItem>
+              <ListItem button component={Link} to="/embroidory">
+                <ListItemText primary="Embroidory" />
+              </ListItem>
+              <ListItem button component={Link} to="/sale">
+                <ListItemText primary="SALE" />
+              </ListItem>
+              <ListItem button component={Link} to="/socialmedia">
+                <ListItemText primary="SK's Community" />
+              </ListItem>
+            </List>
+          </Box>
+        </Drawer>
       </Toolbar>
     </AppBar>
   );
@@ -199,7 +153,7 @@ const navLinkStyle = {
   fontWeight: 'bold',
   padding: 1,
   textDecoration: 'none',
-  fontFamily: "'Serif DiHot', serif", // Updated to use Serif DiHot
+  fontFamily: "'Serif DiHot', serif",
   '&:hover': {
     color: 'black',
   },
