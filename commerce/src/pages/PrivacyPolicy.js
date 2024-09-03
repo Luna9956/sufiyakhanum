@@ -71,10 +71,10 @@ const PrivacyPolicy = () => {
           If you have any requests, questions, comments, or complaints regarding our Privacy Policy or your personal information, please contact our Customer Service:
         </Typography>
         <Typography paragraph>
-          <strong>Email:</strong> [your-email@example.com]
+          <strong>Email:</strong> safiyakhanum73@gmail.com
         </Typography>
         <Typography paragraph>
-          <strong>Address:</strong> [Your Address]
+       
         </Typography>
       </Paper>
     </Container>
