@@ -64,7 +64,7 @@ const App = () => {
           element={<Embroidory addToCart={addToCart} />}
         />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 };
