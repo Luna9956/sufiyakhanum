@@ -1,32 +1,33 @@
-import React from 'react';
-import { Box } from '@mui/material';
+import React from "react";
+import { Box } from "@mui/material";
 
 const Gallery = () => {
   const images = [
-    'https://aik.store/cdn/shop/files/Wedding_Festive_-_Home_Page_Website_Banner.jpg?v=1720518412&width=600',
-    'https://aik.store/cdn/shop/files/Unstitched_-_Home_Page_Website_Banner.jpg?v=1720518456&width=500',
-    'https://aik.store/cdn/shop/files/AIK_Lawn_-_Home_Page_Website_Banner.jpg?v=1720518495&width=600'
+    "https://aik.store/cdn/shop/files/Wedding_Festive_-_Home_Page_Website_Banner.jpg?v=1720518412&width=600",
+    "https://aik.store/cdn/shop/files/Unstitched_-_Home_Page_Website_Banner.jpg?v=1720518456&width=500",
+    "https://aik.store/cdn/shop/files/AIK_Lawn_-_Home_Page_Website_Banner.jpg?v=1720518495&width=600",
   ];
 
   return (
     <Box
       sx={{
-        display: 'flex',
-        justifyContent: 'space-around',
-        flexWrap: 'wrap',
+        display: "flex",
+        justifyContent: "space-around",
+        flexWrap: "wrap",
         padding: 2,
-        width: { xs:300, sm: 600, md: '1366px',xl:"2366px"}
+        // width: { xs:300, sm: 600, md: '1366px',xl:"2366px"}
+        width: "100%",
       }}
     >
       {images.map((url, index) => (
         <Box
           key={index}
           sx={{
-            width: { xs: '100%', sm: '45%', md: '30%' },
+            width: { xs: "100%", sm: "45%", md: "30%" },
             margin: 1,
-            '& img': {
-              width: '100%',
-              height: 'auto',
+            "& img": {
+              width: "100%",
+              height: "auto",
               borderRadius: 2,
               boxShadow: 3,
             },
