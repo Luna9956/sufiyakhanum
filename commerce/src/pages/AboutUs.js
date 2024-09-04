@@ -28,7 +28,7 @@ const AboutUs = () => {
         // width: { xs: 300, sm: 600, md: "1366px", xl: "2366px" },
         width: "100%",
         padding: 4,
-        background: "white",
+        // background: "white",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -39,7 +39,6 @@ const AboutUs = () => {
         variant="h4"
         sx={{
           marginBottom: 4,
-          color: "black",
           textAlign: "center",
           fontWeight: "bold",
           letterSpacing: 1,
@@ -65,7 +64,6 @@ const AboutUs = () => {
                 left: -20,
                 width: "calc(100% + 40px)",
                 height: "calc(100% + 40px)",
-                background: "white",
                 clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 80%)",
                 zIndex: -1,
               },
@@ -76,7 +74,6 @@ const AboutUs = () => {
                 right: -20,
                 width: "calc(100% + 40px)",
                 height: "calc(100% + 40px)",
-                background: "white",
                 clipPath: "polygon(0% 20%, 100% 0%, 100% 100%, 0% 100%)",
                 zIndex: -1,
               },
@@ -86,12 +83,7 @@ const AboutUs = () => {
               variant="body1"
               sx={{
                 fontSize: isExtraSmall ? "1rem" : "1.3rem",
-                color: theme.palette.text.primary,
                 lineHeight: 1.8,
-                "&:hover": {
-                  color: theme.palette.primary.main,
-                  transition: "color 0.3s ease",
-                },
               }}
             >
               Welcome to the world of Safiya Khanum, where tradition meets

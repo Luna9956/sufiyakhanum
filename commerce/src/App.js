@@ -16,6 +16,7 @@ import Sale from "./pages/Sale";
 import ProductDetail from "./components/ProductDetail";
 import Embroidory from "./pages/Embroidory";
 import SocialMedia from "./pages/SocialMedia";
+import CustomTheme from "./utils/theme";
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -39,32 +40,37 @@ const App = () => {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<All />} />
-        <Route
-          path="/unstitched"
-          element={<Unstitched addToCart={addToCart} />}
-        />
-        <Route path="/stitched" element={<Stitched addToCart={addToCart} />} />
-        <Route path="/bridal" element={<Bridal addToCart={addToCart} />} />
-        <Route path="/newin" element={<NewIn addToCart={addToCart} />} />
-        <Route path="/sale" element={<Sale addToCart={addToCart} />} />
-        <Route path="/product" element={<Product addToCart={addToCart} />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route
-          path="/product/:id"
-          element={<ProductDetail addToCart={addToCart} />}
-        />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
-        <Route path="/terms" element={<TermsOfService />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/socialmedia" element={<SocialMedia />} />
-        <Route
-          path="/embroidory"
-          element={<Embroidory addToCart={addToCart} />}
-        />
-      </Routes>
-      <Footer />
+      <CustomTheme>
+        <Routes>
+          <Route path="/" element={<All />} />
+          <Route
+            path="/unstitched"
+            element={<Unstitched addToCart={addToCart} />}
+          />
+          <Route
+            path="/stitched"
+            element={<Stitched addToCart={addToCart} />}
+          />
+          <Route path="/bridal" element={<Bridal addToCart={addToCart} />} />
+          <Route path="/newin" element={<NewIn addToCart={addToCart} />} />
+          <Route path="/sale" element={<Sale addToCart={addToCart} />} />
+          <Route path="/product" element={<Product addToCart={addToCart} />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/product/:id"
+            element={<ProductDetail addToCart={addToCart} />}
+          />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/socialmedia" element={<SocialMedia />} />
+          <Route
+            path="/embroidory"
+            element={<Embroidory addToCart={addToCart} />}
+          />
+        </Routes>
+        <Footer />
+      </CustomTheme>
     </Router>
   );
 };
